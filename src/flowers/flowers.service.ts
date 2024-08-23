@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 // import { Flower } from "@prisma/client";
 import { PrismaService } from "src/prisma.service";
+import { FlowersCreateDto } from "./flowers.dto";
 
 @Injectable()
 export class FlowersService {
@@ -25,5 +26,8 @@ export class FlowersService {
         //         price: 200,
         //     },
         // ];
+    }
+    create(dto: FlowersCreateDto) {
+        return this.prisma.flower.create({ data: dto });
     }
 }
